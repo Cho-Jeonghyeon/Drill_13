@@ -1,6 +1,7 @@
 from pico2d import load_image, get_canvas_width, get_canvas_height, clamp
 import common
 import random
+import game_world
 
 class Court:
     def __init__(self):
@@ -99,4 +100,9 @@ class Ball:
 
     def update(self):
         pass
+
+
+    def get_bb(self):
+        return self.x - 10, self.y - 10, self.x + 10, self.y + 10
+
 
