@@ -31,11 +31,10 @@ def init():
     common.boy = Boy()
     game_world.add_object(common.boy, 2)
 
-    # 충돌 그룹 등록: boy와 모든 ball
+
     game_world.add_collision_pair('boy:ball', common.boy, None)
     for b in common.court.balls:
         game_world.add_collision_pair('boy:ball', None, b)
-
 
 
 
