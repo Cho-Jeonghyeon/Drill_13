@@ -82,5 +82,18 @@ class InfiniteCourt:
     def handle_event(self, event):
         pass
 
+class Ball:
+    image = None
 
+    def __init__(self, x, y):
+        if Ball.image is None:
+            Ball.image = load_image('ball21x21.png')
+        self.x = x
+        self.y = y
+
+    def draw(self, window_left, window_bottom):
+        pass
+
+    def update(self):
+        pass
 
