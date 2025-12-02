@@ -24,9 +24,6 @@ class Court:
     def draw(self):
         self.image.clip_draw_to_origin(self.window_left, self.window_bottom, self.cw, self.ch, 0, 0)
 
-        for b in self.balls:
-            b.draw(self.window_left, self.window_bottom)
-
 
 class TileCourt:
     def __init__(self):
@@ -93,9 +90,10 @@ class Ball:
         self.x = x
         self.y = y
 
-    def draw(self, window_left, window_bottom):
-        sx = self.x - window_left
-        sy = self.y - window_bottom
+    def draw(self):
+        # court의 현재 창 좌표를 사용해 화면 위치 계산
+        sx = self.x - common.court.window_left
+        sy = self.y - common.court.window_bottom
         Ball.image.draw(sx, sy)
 
     def update(self):
@@ -105,4 +103,9 @@ class Ball:
     def get_bb(self):
         return self.x - 10, self.y - 10, self.x + 10, self.y + 10
 
+    def handle_collision(self, group, other):
+        # boy와 충돌하면 게임 월드에서 제거
+        if group == 'boy:ball':
+            game_world.remove_object(self)
+            common.court.balls.remove(self)
 
