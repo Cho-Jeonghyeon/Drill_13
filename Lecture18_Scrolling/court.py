@@ -11,6 +11,9 @@ class Court:
         # fiil here
         self.w=self.image.w
         self.h=self.image.h
+        # 초기 윈도우 오프셋을 미리 설정(첫 프레임 이전에 접근될 수 있으므로)
+        self.window_left = 0
+        self.window_bottom = 0
 
         #공 랜덤 배치
         self.balls = [Ball(random.randint(0, self.w - 1), random.randint(0, self.h - 1)) for _ in range(100)]
@@ -108,4 +111,3 @@ class Ball:
         if group == 'boy:ball':
             game_world.remove_object(self)
             common.court.balls.remove(self)
-
