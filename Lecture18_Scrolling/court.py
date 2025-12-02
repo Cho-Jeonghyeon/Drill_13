@@ -92,7 +92,9 @@ class Ball:
         self.y = y
 
     def draw(self, window_left, window_bottom):
-        pass
+        sx = self.x - window_left
+        sy = self.y - window_bottom
+        Ball.image.draw(sx, sy)
 
     def update(self):
         pass
